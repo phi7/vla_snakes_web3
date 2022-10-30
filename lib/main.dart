@@ -14,7 +14,17 @@ import 'home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyCCyz3vErKNbZZFcywITGGhLWJbjkirUu0",
+        authDomain: "vla-snakes-web3.firebaseapp.com",
+        projectId: "vla-snakes-web3",
+        storageBucket: "vla-snakes-web3.appspot.com",
+        messagingSenderId: "595455404721",
+        appId: "1:595455404721:web:650d4dd002234bf3dc1090",
+        measurementId: "G-ZK5K9B1PS8"
+    ),
+  );
   runApp(MyApp());
 }
 
