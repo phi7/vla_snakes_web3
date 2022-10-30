@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>595455404721-1l56ojpckgjbgae19t3oks6hq3hlj1tl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.595455404721-1l56ojpckgjbgae19t3oks6hq3hlj1tl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBJVW0Ey2D4YY-BZXT4brlj80O-kJskYTE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>595455404721</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.vlaSnakes</string>
+	<key>PROJECT_ID</key>
+	<string>vla-snakes-web3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vla-snakes-web3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:595455404721:ios:d037b51571a37c62dc1090</string>
+</dict>
+</plist>
