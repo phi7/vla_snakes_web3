@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SnakeGamePage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
   int bestScore = 0;
   int totalScore = 0;
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  late User currentUser;
+  User? currentUser;
   late CollectionReference users;
   late DocumentSnapshot userDoc;
 
@@ -39,9 +40,9 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
     super.initState();
     Future(() async {
       currentUser = FirebaseAuth.instance.currentUser!;
-      print(currentUser.uid);
+      print(currentUser!.uid);
       users = FirebaseFirestore.instance.collection('users');
-      userDoc = await users.doc(currentUser.uid).get();
+      userDoc = await users.doc(currentUser!.uid).get();
       if(userDoc.exists){
         setState((){
           bestScore = userDoc.get("bestScore");
@@ -52,7 +53,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
           bestScore = 0;
           totalScore = 0;
         });
-        users.doc(currentUser.uid)
+        users.doc(currentUser!.uid)
             .set({
           'bestScore': bestScore,
           'totalScore': totalScore,
@@ -176,7 +177,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
     // }
     bestScore = snake.length - 2 > bestScore ? snake.length - 2 : bestScore;
     totalScore = totalScore +  snake.length - 2;
-    users.doc(currentUser.uid)
+    users.doc(currentUser!.uid)
         .set({
       'bestScore': bestScore,
       'totalScore': totalScore,
@@ -193,6 +194,13 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
       body: Column(
         children: <Widget>[
           SizedBox(height: size.height/ 12,),
+          currentUser != null ? Center(child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("UID："),
+              CopyableText(currentUser!.uid.toString()),
+            ],
+          )) : CircularProgressIndicator(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -349,6 +357,25 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
               )),
         ],
       ),
+    );
+  }
+}
+
+class CopyableText extends Text {
+  const CopyableText(
+      String data, {
+        Key? key,
+        TextStyle? style,
+      }) : super(data, key: key, style: style);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+        highlightColor: Colors.blue,
+      onTap: () {
+        // print("ボタン");
+        Clipboard.setData(ClipboardData(text: data));},
+      child: super.build(context),
     );
   }
 }
