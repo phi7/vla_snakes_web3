@@ -197,10 +197,10 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
           currentUser != null ? Center(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("UID："),
+              const Text("UID："),
               CopyableText(currentUser!.uid.toString()),
             ],
-          )) : CircularProgressIndicator(),
+          )) : const CircularProgressIndicator(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -208,7 +208,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
                 angle: 180 * pi / 180,
                   child: IconButton(onPressed: (){
                     Navigator.of(context).pop();
-                  }, icon: Icon(Icons.exit_to_app,size: 40,))),
+                  }, icon: const Icon(Icons.exit_to_app,size: 40,))),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -216,12 +216,12 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
                     'Best: $bestScore',
                     style: fontStyle,
                   ),
-                  SizedBox(width: 8,),
+                  const SizedBox(width: 8,),
                   Text('Total: $totalScore',
                     style: fontStyle,)
                 ],
               ),
-              SizedBox(width: 40,),
+              const SizedBox(width: 40,),
             ],
           ),
           Expanded(
@@ -244,7 +244,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
               child: AspectRatio(
                 aspectRatio: squaresPerRow / (squaresPerCol + 5),
                 child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: squaresPerRow,
                     ),
@@ -328,7 +328,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -348,7 +348,7 @@ class _SnakeGamePageState extends State<SnakeGamePage> {
                           startGame();
                         }
                       }),
-                  SizedBox(width: 16,),
+                  const SizedBox(width: 16,),
                   Text(
                     'NowScore: ${snake.length - 2}',
                     style: fontStyle,
